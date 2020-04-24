@@ -8,9 +8,12 @@ window.state = {
 
 const main = new MainPage();
 
+main.renderPage();
 
-let book = fetch('https://github.com/timurkalimullin/rslang/blob/rslang-data/data/book1.json')
-.then(res=>res.json)
+
+
+
+
 
 
 
