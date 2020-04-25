@@ -27,6 +27,7 @@ export default class MainPage {
         dataarr.push(temp[randWord]);
       } else {i--;}
     }
+    window.vars.cards = dataarr;
     return dataarr;
   }
 

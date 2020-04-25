@@ -6,7 +6,9 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 window.vars = {
   play: false,
   recognition: null,
-  speech: null
+  speech: null,
+  wordArr: [],
+  rightArr: []
 };
 
 let main = new MainPage();
@@ -23,6 +25,8 @@ document.body.addEventListener('click', (event)=>{
     window.vars.speech.stop();
   }
 });
+
+
 
 
 
