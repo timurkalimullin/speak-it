@@ -2,7 +2,7 @@ import Card from './card.js';
 
 export default class MainPage {
   constructor() {
-    this.group = 0;
+    this.group = 4;
     this.data = this.formData();
   }
 
@@ -25,7 +25,7 @@ export default class MainPage {
       let randWord = Math.floor(Math.random()*20);
       if (!dataarr.includes(temp[randWord])) {
         dataarr.push(temp[randWord]);
-      } else {i--}
+      } else {i--;}
     }
     return dataarr;
   }

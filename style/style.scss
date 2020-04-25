@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 .main-page{
@@ -12,13 +13,16 @@
     flex-wrap: wrap;
     margin: 0 auto;
     .card{
-      flex: 0 0 18%;
+      flex: 0 0 17%;
       height: 100px;
+      cursor: pointer;
+      text-align: center;
       &__active{
         border: 2px solid red;
       }
       img{
         width: 20px;
+        display: block;
       }
     }
 
@@ -30,11 +34,14 @@
     padding: 10px;
     text-align: center;
     #image__wrapper{
-      width: 100%;
+      width: 400px;
       height: 260px;
+      margin: 0 auto;
       margin-bottom: 20px;
       img{
         object-fit: cover;
+        width: 100%;
+        height: 100%;
       }
     }
   }

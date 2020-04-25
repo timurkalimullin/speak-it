@@ -25,7 +25,7 @@ export default class Card {
     }
 
     card.addEventListener('click', (event) => {
-      if (!window.state.play) {
+      if (!window.vars.play) {
         document.querySelectorAll('.card').forEach((el) => {
           el.classList.remove('card__active');
         });
