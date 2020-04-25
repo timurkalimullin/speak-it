@@ -6,9 +6,11 @@ window.state = {
   play: false
 };
 
-const main = new MainPage();
+let main = new MainPage();
 
-main.renderPage();
+console.log(main.formData());
+
+main.renderPage()
 
 
 

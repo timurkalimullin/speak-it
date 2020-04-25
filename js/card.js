@@ -21,6 +21,7 @@ export default class Card {
       const data = await res.json();
       localStorage.translation = await JSON.stringify(data);
       document.querySelector('#translation').innerHTML = `${JSON.parse(localStorage.translation).text}`;
+      localStorage.translation = null;
     }
 
     card.addEventListener('click', (event) => {
