@@ -3,7 +3,7 @@ import Speech from './speech.js';
 
 export default class MainPage {
   constructor() {
-    this.group = 2;
+    this.group = 0;
   }
 
   formData() {
@@ -51,6 +51,8 @@ export default class MainPage {
   }
 
   static result() {
+
+
     document.querySelector('.main-page').classList.add('hidden');
     document.querySelector('.result-modal').classList.remove('hidden');
 
@@ -92,26 +94,35 @@ export default class MainPage {
         document.querySelector('.main-page').classList.remove('hidden');
       }
       if (event.target.closest('#start')) {
-        window.vars.speech = new Speech();
-        window.vars.speech.start();
-        document.querySelectorAll('.card').forEach(card=>{
-          card.classList.remove('active');
-        });
+        if (window.vars.play === false) {
+          window.vars.speech = new Speech();
+          window.vars.speech.start();
+          document.querySelectorAll('.card').forEach(card=>{
+            card.classList.remove('active');
+          });
+        }
       }
 
       if (event.target.closest('#continue')) {
-        window.vars.speech = new Speech();
-        window.vars.speech.start();
-        document.querySelectorAll('.card').forEach(card=>{
-          card.classList.remove('active');
-        });
+        if (window.vars.wordArr.length !== 0) {
+          window.vars.speech = new Speech();
+          window.vars.speech.start();
+          document.querySelectorAll('.card').forEach(card=>{
+            card.classList.remove('active');
+          });
 
-        document.querySelector('.result-modal').classList.add('hidden');
-        document.querySelector('.main-page').classList.remove('hidden');
+          document.querySelector('.result-modal').classList.add('hidden');
+          document.querySelector('.main-page').classList.remove('hidden');
+        } else {
+          alert('Start new game, please');
+        }
       }
 
       if (event.target.closest('#new-game')) {
         MainPage.clearPage();
+        if ( window.vars.speech) {
+          window.vars.speech.stop();
+         }
         this.renderPage();
         document.querySelectorAll('.section').forEach(section=>{
           section.classList.add('hidden');
@@ -138,10 +149,14 @@ export default class MainPage {
         event.target.closest('.value').classList.add('active');
         let group = event.target.closest('.value').getAttribute('id').replace('level-', '');
         this.group = group-1;
+        if (window.vars.speech) {
+          window.vars.speech.stop();
+        }
         MainPage.clearPage();
         this.renderPage();
       }
     });
   }
+
 }
 

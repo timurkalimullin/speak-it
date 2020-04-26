@@ -1,3 +1,4 @@
+import MainPage from './main_page.js';
 export default class Speech {
   constructor () {
 
@@ -11,6 +12,7 @@ export default class Speech {
     window.vars.recognition.addEventListener('result', this.micHandler);
     window.vars.recognition.start();
     window.vars.recognition.addEventListener('end', window.vars.recognition.start);
+    document.querySelector('.microphone').classList.remove('hidden');
     console.log('Speech recognition started');
   }
 
@@ -20,6 +22,7 @@ export default class Speech {
       window.vars.recognition.removeEventListener('result', this.micHandler);
       window.vars.recognition.removeEventListener('end', window.vars.recognition.start);
       window.vars.recognition.abort();
+      document.querySelector('.microphone').classList.add('hidden');
       console.log('Speech recognition stoped');
     }
   }
@@ -44,7 +47,7 @@ export default class Speech {
       Object.values(window.vars.cards).forEach(el=>{
         if (el.word.toLowerCase() === saying) {
           let url = `https://raw.githubusercontent.com/timurkalimullin/rslang/rslang-data/data/${el.image}`;
-          document.querySelector('#image__wrapper').innerHTML = `<img src="${url}" alt="image">`
+          document.querySelector('#image__wrapper').innerHTML = `<img src="${url}" alt="image">`;
         }
       });
 
@@ -53,6 +56,11 @@ export default class Speech {
           el.closest('.card').classList.add('right-answer');
         }
       });
+
+      if (window.vars.wordArr.length === 0) {
+        window.vars.speech.stop();
+        MainPage.result();
+      }
     }
   }
 
