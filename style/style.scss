@@ -5,7 +5,17 @@
   user-select: none;
 }
 
+.start-screen{
+  background-image: url("../assets/map-of-the-world-2401458_1920.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-attachment: fixed;
+}
+
 .main-page{
+  display: none;
   .card-window{
     max-width: 1400px;
     display: flex;
@@ -13,16 +23,37 @@
     flex-wrap: wrap;
     margin: 0 auto;
     .card{
-      flex: 0 0 17%;
-      height: 100px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       cursor: pointer;
-      text-align: center;
-      &__active{
-        border: 2px solid red;
+      padding: 10px;
+      padding-left: 40px;
+      font-size: 24px;
+      line-height: 1.4;
+      min-width: 200px;
+      min-height: 70px;
+      margin: 10px;
+      border: 1px solid rgb(206, 212, 218);
+      border-radius: 5px;
+      background-color: #fff;
+      transition: .3s;
+      &.active{
+       background-color: rgb(182, 205, 212);
       }
       img{
         width: 20px;
         display: block;
+        position: absolute;
+        left: 15px;
+        top: 30px;
+      }
+      &.right-answer{
+        box-shadow: 3px 3px 3px green;
+      }
+      .translation{
+        display: none;
       }
     }
 
@@ -43,6 +74,40 @@
         width: 100%;
         height: 100%;
       }
+    }
+  }
+}
+
+.result-modal{
+  display: none;
+  .result__wrapper{
+    .card{
+      display: inline-block;
+      position: relative;
+      margin: 0 auto;
+      height: 50px;
+      min-width: 380px;
+      cursor: pointer;
+      text-align: center;
+      padding-top: 10px;
+      margin-bottom: 8px;
+      &.active{
+        border: 2px solid red;
+      }
+      img{
+        width: 20px;
+        display: block;
+        position: absolute;
+        left: 5px;
+        top: 17%;
+      }
+      p{
+        display: inline-block;
+      }
+    }
+    .answers{
+      display: flex;
+      flex-direction: column;
     }
   }
 }

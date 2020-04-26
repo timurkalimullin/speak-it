@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="start-screen"></div>
+
   <div class="main-page">
     <div class="content-window">
       <div id="image__wrapper">
@@ -18,8 +19,17 @@
     <div class="card-window"></div>
     <button id="start">START</button>
     <button id="stop">STOP</button>
+    <button id="result">RESULT</button>
   </div>
-  <div class="result-modal"></div>
+
+  <div class="result-modal">
+    <div class="result__wrapper">
+      <h2>Guessed</h2>
+      <div class="guessed answers"></div>
+      <h2>Not guessed</h2>
+      <div class="not-guessed answers"></div>
+    </div>
+  </div>
 
 <script type="module" src="index.js"></script>
 </body>

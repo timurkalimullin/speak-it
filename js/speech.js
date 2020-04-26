@@ -5,7 +5,7 @@ export default class Speech {
   }
 
   start() {
-    Speech.pageWords();
+    window.vars.play = true;
     window.vars.recognition = new SpeechRecognition();
     window.vars.recognition.lang = 'en-US';
     window.vars.recognition.interimResults = true;
@@ -16,6 +16,7 @@ export default class Speech {
   }
 
   stop() {
+    window.vars.play = false;
     if (window.vars.recognition) {
       window.vars.recognition.removeEventListener('result', this.micHandler);
       window.vars.recognition.removeEventListener('end', window.vars.recognition.start);
@@ -39,24 +40,21 @@ export default class Speech {
   static checker(saying) {
     if (window.vars.wordArr.includes(saying)) {
       let ind = window.vars.wordArr.indexOf(saying);
-      let right =window.vars.wordArr.splice(ind,1);
+      let right = window.vars.wordArr.splice(ind,1);
       window.vars.rightArr.push(right[0]);
-      console.log(window.vars.rightArr, window.vars.wordArr)
       Object.values(window.vars.cards).forEach(el=>{
-        if (el.word === saying) {
+        if (el.word.toLowerCase() === saying) {
           let url = `https://raw.githubusercontent.com/timurkalimullin/rslang/rslang-data/data/${el.image}`;
           document.querySelector('#image__wrapper').innerHTML = `<img src="${url}" alt="image">`
         }
-      })
+      });
+
+      document.querySelectorAll('p.word').forEach(el=>{
+        if (el.innerText === saying) {
+          el.closest('.card').classList.add('right-answer');
+        }
+      });
     }
   }
 
-  static pageWords() {
-    window.vars.wordArr = [];
-    window.vars.rightArr = [];
-    const cardWords = document.querySelectorAll('.word');
-    cardWords.forEach(el=>{
-      window.vars.wordArr.push(el.innerText);
-    });
-  }
 }
