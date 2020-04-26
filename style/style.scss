@@ -6,18 +6,32 @@
 }
 
 .start-screen{
-  background-image: url("../assets/map-of-the-world-2401458_1920.jpg");
-  background-size: cover;
-  background-position: center;
+  padding-top: 300px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/cyber-3400789_1920.jpg");
   background-repeat: no-repeat;
-  background-color: transparent;
   background-attachment: fixed;
+  background-size: cover;
+  background-position: 16% 30%;
+  &__container{
+    text-align: center;
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    color: rgb(230, 214, 223);
+    text-shadow: 0 0 3px rgb(157, 163, 157);
+    h1, h2{
+      margin-bottom: 30px;
+    }
+
+  }
 }
 
 .main-page{
-  display: none;
+  padding-top: 40px;
   .card-window{
-    max-width: 1400px;
+    max-width: 1240px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -76,23 +90,85 @@
       }
     }
   }
+  .btn__wrapper{
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+  }
+  .level-bar{
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    ul{
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      li{
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        padding: 4px;
+        border:3px solid green;
+        border-radius:50%;
+        text-align: center;
+        padding-top: 7px;
+        cursor: pointer;
+        &.active{
+          background-color: gray;
+        }
+      }
+    }
+  }
 }
 
 .result-modal{
-  display: none;
+  padding-top: 100px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/cyber-3400789_1920.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 16% 30%;
+  h2{
+    margin-bottom: 20px;
+  }
+  #h2_guessed{
+    span{
+      background-color:green;
+      border-radius:20%;
+      color: honeydew;
+      padding: 0 3px 0 3px;
+    }
+  }
+  #h2_not-guessed{
+    span{
+      background-color:red;
+      border-radius:20%;
+      color: honeydew;
+      padding: 0 3px 0 3px;
+    }
+  }
   .result__wrapper{
+    margin: 0 auto;
+    text-align: center;
+    background-color:rgba($color: #f8f6f6, $alpha: 1);
+    width: 600px;
+    padding: 30px 10px;
+    border: 2px ridge gray;
+    border-radius:5px;
     .card{
       display: inline-block;
       position: relative;
       margin: 0 auto;
-      height: 50px;
+      height: 30px;
       min-width: 380px;
       cursor: pointer;
       text-align: center;
-      padding-top: 10px;
+      padding-top: 5px;
       margin-bottom: 8px;
       &.active{
-        border: 2px solid red;
+        outline: 2px dotted rgb(233, 190, 190);
       }
       img{
         width: 20px;
@@ -110,4 +186,8 @@
       flex-direction: column;
     }
   }
+}
+
+.hidden{
+  display: none;
 }

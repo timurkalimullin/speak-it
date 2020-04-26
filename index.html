@@ -7,27 +7,53 @@
   <title>Speak It</title>
 </head>
 <body>
-  <div class="start-screen"></div>
+  <div class="section start-screen">
+    <div class="start-screen__container">
+      <h1>SPEAKIT</h1>
+      <h2>      Click on the words to hear them sound. <br>
+      Click on the button and speak the words into the microphone</h2>
 
-  <div class="main-page">
+      <button class="btn goon__btn" id="goon">GO ON</button>
+    </div>
+  </div>
+
+  <div class="section main-page hidden">
+    <div class="level-bar">
+      <ul>
+        <li id="level-1" class="value active"><span>1</span></li>
+        <li id="level-2" class="value"><span>2</span></li>
+        <li id="level-3" class="value"><span>3</span></li>
+        <li id="level-4" class="value"><span>4</span></li>
+        <li id="level-5" class="value"><span>5</span></li>
+        <li id="level-6" class="value"><span>6</span></li>
+      </ul>
+    </div>
     <div class="content-window">
       <div id="image__wrapper">
-        <img src="assets/blank.jpg" alt="start-image">
+
       </div>
       <p id="translation"></p>
     </div>
     <div class="card-window"></div>
-    <button id="start">START</button>
-    <button id="stop">STOP</button>
-    <button id="result">RESULT</button>
+    <div class="btn__wrapper">
+      <button class="btn start__btn" id="start">START</button>
+      <button class="btn stop__btn" id="stop">PAUSE</button>
+      <button class="btn new-game__btn" id="new-game">NEW GAME</button>
+      <button class="btn result__btn" id="result">RESULT</button>
+    </div>
   </div>
 
-  <div class="result-modal">
+  <div class="section result-modal hidden">
     <div class="result__wrapper">
-      <h2>Guessed</h2>
+      <h2 id="h2_guessed"></h2>
       <div class="guessed answers"></div>
-      <h2>Not guessed</h2>
+      <h2 id="h2_not-guessed"></h2>
       <div class="not-guessed answers"></div>
+
+      <div class="btn__wrapper">
+        <button class="btn continue__btn" id="continue">CONTINUE GAME</button>
+        <button class="btn new-game__btn" id="new-game">NEW GAME</button>
+      </div>
     </div>
   </div>
 

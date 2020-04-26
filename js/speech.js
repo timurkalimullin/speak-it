@@ -1,7 +1,6 @@
 export default class Speech {
   constructor () {
-    this.wordArr = [];
-    this.rightWordArr = [];
+
   }
 
   start() {
