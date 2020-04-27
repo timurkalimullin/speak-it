@@ -9,7 +9,7 @@
 }
 
 .start-screen{
-  padding-top: 300px;
+  padding: 17vw 30px 0 30px;
   width: 100vw;
   height: 100vh;
   background-image: url("../assets/cyber-3400789_1920.jpg");
@@ -19,7 +19,7 @@
   background-position: 16% 30%;
   &__container{
     text-align: center;
-    width: 430px;
+    max-width: 430px;
     height: auto;
     margin: 0 auto;
     color: rgb(230, 214, 223);
@@ -33,7 +33,7 @@
 }
 
 .main-page{
-  padding-top: 80px;
+  padding: 80px 20px 20px 20px;
   .card-window{
     max-width: 1240px;
     display: flex;
@@ -85,11 +85,11 @@
   .content-window{
     margin: 0 auto;
     width: auto;
-    height: 340px;
+    max-height: 340px;
     padding: 10px;
     text-align: center;
     #image__wrapper{
-      width: 400px;
+      max-width: 400px;
       height: 260px;
       margin: 0 auto;
       margin-bottom: 20px;
@@ -181,7 +181,7 @@
     margin: 0 auto;
     text-align: center;
     background-color:rgba($color: #f8f6f6, $alpha: 1);
-    width: 600px;
+    max-width: 600px;
     padding: 30px 10px;
     border: 2px ridge gray;
     border-radius:5px;
@@ -217,6 +217,30 @@
   }
 }
 
+.stats-modal{
+  text-align: center;
+  padding: 100px 30px 40px 30px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/cyber-3400789_1920.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 16% 30%;
+  color: rgb(230, 214, 223);
+  text-shadow: 1px -1px 5px rgb(157, 163, 157);
+  .message{
+    max-width: 700px;
+    max-height: 640px;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    overflow: auto;
+    p{
+      margin-bottom: 15px;
+    }
+  }
+}
+
 .hidden{
   display: none;
 }
@@ -239,6 +263,26 @@
   }
 }
 
+@media (max-width: 479px) {
+  .main-page{
+    padding-top: 100px;
+    .card-window{
+      flex-direction: column;
+    }
+    .level-bar{
+      ul{
+        li{
+          width: 27px;
+          height: 27px;
+          padding-top: 2px;
+        }
+      }
+    }
+  }
+  .stats-modal, .start-screen, .result-modal{
+    background-position: 50% 36%;
+  }
+}
 
 @keyframes pulsing {
   0%   {opacity: 1;}

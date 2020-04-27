@@ -48,6 +48,7 @@ export default class MainPage {
     });
     document.querySelector('#image__wrapper').innerHTML = `<img src="assets/blank.jpg" alt="start-image">`;
     MainPage.pageWords();
+
   }
 
   static result() {
@@ -119,6 +120,7 @@ export default class MainPage {
       }
 
       if (event.target.closest('#new-game')) {
+        MainPage.writeStat();
         MainPage.clearPage();
         if ( window.vars.speech) {
           window.vars.speech.stop();
@@ -128,6 +130,7 @@ export default class MainPage {
           section.classList.add('hidden');
         });
         document.querySelector('.main-page').classList.remove('hidden');
+
       }
 
       if (event.target.closest('#stop')) {
@@ -139,10 +142,29 @@ export default class MainPage {
       if (event.target.closest('#result')) {
         MainPage.result();
       }
+
+      if (event.target.closest('#stat')) {
+        if ( window.vars.speech) {
+          window.vars.speech.stop();
+         }
+          MainPage.showStats();
+          document.querySelector('.main-page').classList.add('hidden');
+          document.querySelector('.stats-modal').classList.remove('hidden');
+      }
+
+      if (event.target.closest('#back')) {
+        document.querySelector('.main-page').classList.remove('hidden');
+        document.querySelector('.stats-modal').classList.add('hidden');
+      }
+
+      if (event.target.closest('#reset')) {
+        MainPage.resetStats();
+      }
     });
 
     document.querySelector('.level-bar').addEventListener('click', (event)=>{
       if (event.target.closest('.value')) {
+        MainPage.writeStat();
         document.querySelectorAll('.value').forEach(el=>{
           el.classList.remove('active');
         });
@@ -158,5 +180,50 @@ export default class MainPage {
     });
   }
 
+  static writeStat() {
+
+    let obj = {};
+    let date = new Date();
+    obj.date = `${date}`;
+    obj.guessed = window.vars.rightArr;
+    obj.notGuessed = window.vars.wordArr;
+    if (!window.localStorage.stats) {
+      window.localStorage.setItem('stats', JSON.stringify(new Object));
+      let temp = JSON.parse(window.localStorage.stats);
+      temp[0] = obj;
+      window.localStorage.stats = JSON.stringify(temp);
+    } else {
+      let temp = JSON.parse(window.localStorage.stats);
+      let keyMAx = Math.max.apply(null, Object.keys(temp));
+      temp[keyMAx+1] = obj;
+      window.localStorage.stats = JSON.stringify(temp);
+    }
+  }
+
+  static showStats() {
+    if (window.localStorage.stats) {
+      document.querySelector('.message').innerHTML = '';
+      let obj = JSON.parse(window.localStorage.stats);
+      Object.keys(obj).forEach(el=>{
+        let message = `${el}:  ${obj[el].date} <br>  Guessed words: ${obj[el].guessed} <br> Not guessed words: ${obj[el].notGuessed}`;
+        let p = document.createElement('p');
+        p.innerHTML = `${message}`;
+        document.querySelector('.message').append(p);
+      });
+    }
+  }
+
+  static resetStats() {
+    if (window.localStorage.stats) {
+      window.localStorage.removeItem('stats');
+    }
+    document.querySelector('.message').innerHTML = `No stats yet, sorry <br> Statistics will be created when you end this game and start new game`;
+  }
 }
+
+
+
+
+
+
 
